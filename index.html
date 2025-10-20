@@ -1,6 +1,77 @@
-<!doctype html>
-<html>
-<head><meta charset="utf-8"><title>Hello</title></head>
-<h1>MooseLove</h1>
-  <p>This is Test Page</p>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>MooseLove — Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <header class="hero">
+            <div class="hero-inner">
+                <h1 class="name">MooseLove</h1>
+                <p class="subtitle">このサイトでは自身が開発したプログラムや発見したCVE、その他実績やメモをまとめています。</p>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title">Discovered CVEs</h2>
+            <div class="table-wrap">
+                <table class="cve-table" aria-describedby="cve-desc">
+                    <caption id="cve-desc" class="sr-only">発見したCVE一覧とひとことメモ</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">CVE</th>
+                            <th scope="col">ひとこと</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="https://www.wordfence.com/threat-intel/vulnerabilities/id/e3aac40c-1576-45b5-90f8-14ff05c089c7">CVE-2025-10375</a></td>
+                            <td>管理者のみ行える設定パラメータにnonceや権限チェックが無いため、CSRF脆弱性があった。だが適切なエスケープがされているため、これ以上の攻撃には昇華できず。</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/gspeech/gspeech-tts-wordpress-text-to-speech-plugin-31713-authenticated-admin-sql-injection">CVE-2025-10187</a></td>
+                            <td>管理者限定のSelf SQLインジェクション。かなり脅威度は低めだったがシングルクォーテーションなどを検索ワードに用いると無限リロードになることもあって、シンプルに報告した方が良さそうだなーという判断。</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://github.com/MooseLoveti/WP-Links-Page-CVE-Report">CVE-2025-10175</a></td>
+                            <td>人生で初めてWordFence様から報奨金を頂いた。内容としては低権限のユーザーがBlind SQLインジェクションを仕掛けられる。idパラメータのエスケープ不足が原因。</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://github.com/MooseLoveti/PagSeguro-Connect-Para-WooCommerce-CVE-Report">CVE-2025-10142</a></td>
+                            <td>ShopManager以上の権限を持つ攻撃者のみ可能なSQLインジェクション。かなり難易度は高いが、人生初のSQLインジェクションがこれ。少し思い出深い。</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://github.com/MooseLoveti/Trinity-Audio-CVE-Report2">CVE-2025-9886 / CVE-2025-9952</a></td>
+                            <td>管理者のみ行える設定パラメータにXSS＆CSRFが同時存在。単体だと脅威は少ないが、これらを合わせるとセッションの乗っ取りが可能。単体のCVSSスコアが低いだけで楽観視するのは良くないと思った。</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://github.com/MooseLoveti/Trinity-Audio-CVE-Report">CVE-2025-9196</a></td>
+                            <td>admin/inc/phpinfo.phpが無権限で閲覧可能な脆弱性。攻撃者はこれを足掛かりに新たな攻撃を仕掛けることが出来る。意外とシンプルな脆弱性が残っていてビックリ。</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://github.com/MooseLoveti/EventON-Lite-CVE-Report">CVE-2025-8091</a></td>
+                            <td>人生で初めて取得したCVEです。管理者がイベント情報を非公開や削除、パスワード認証といった手段で情報を秘匿しても、イベント情報のIDさえ分かれば情報が漏洩してしまうという脆弱性。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Development</h2>
+            <p class="dev-note"></p>
+        </section>
+
+        <footer class="site-footer">
+            <small>© <span id="year"></span> MooseLove</small>
+        </footer>
+    </main>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
 </html>
