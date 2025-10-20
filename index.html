@@ -30,19 +30,19 @@
                     <tbody>
                         <tr>
                             <td><a href="https://www.wordfence.com/threat-intel/vulnerabilities/id/e3aac40c-1576-45b5-90f8-14ff05c089c7">CVE-2025-10375</a></td>
-                            <td>管理者のみ行える設定パラメータにnonceや権限チェックが無いため、CSRF脆弱性があった。だが適切なエスケープがされているため、これ以上の攻撃には昇華できず。</td>
+                            <td>管理者のみ行える設定パラメータにnonceや権限チェックが無いため、CSRFが可能。だが適切なエスケープがされているため、これ以上の攻撃には昇華できず。CVSSはかなり低め。</td>
                         </tr>
                         <tr>
                             <td><a href="https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/gspeech/gspeech-tts-wordpress-text-to-speech-plugin-31713-authenticated-admin-sql-injection">CVE-2025-10187</a></td>
-                            <td>管理者限定のSelf SQLインジェクション。かなり脅威度は低めだったがシングルクォーテーションなどを検索ワードに用いると無限リロードになることもあって、シンプルに報告した方が良さそうだなーという判断。</td>
+                            <td>管理者限定のSelf SQLインジェクション。かなり脅威度は低めだったがシングルクォーテーションなどを検索ワードに用いると無限ぐるぐるになることもあって、シンプルに報告した方が良さそうだなーと判断。</td>
                         </tr>
                         <tr>
                             <td><a href="https://github.com/MooseLoveti/WP-Links-Page-CVE-Report">CVE-2025-10175</a></td>
-                            <td>人生で初めてWordFence様から報奨金を頂いた。内容としては低権限のユーザーがBlind SQLインジェクションを仕掛けられる。idパラメータのエスケープ不足が原因。</td>
+                            <td>人生で初めて報奨金を頂いた。内容としては低権限のユーザーがBlind SQLインジェクションを仕掛けられる。idパラメータのエスケープ不足が原因。この体験談についてはqiitaで<a href="https://qiita.com/MooseLove0308/items/58edbcbfa6128eab2aa4">記事</a>を投稿してます。</td>
                         </tr>
                         <tr>
                             <td><a href="https://github.com/MooseLoveti/PagSeguro-Connect-Para-WooCommerce-CVE-Report">CVE-2025-10142</a></td>
-                            <td>ShopManager以上の権限を持つ攻撃者のみ可能なSQLインジェクション。かなり難易度は高いが、人生初のSQLインジェクションがこれ。少し思い出深い。</td>
+                            <td>ShopManager以上の権限を持つ攻撃者のみ可能なSQLインジェクション。高権限しか不可能であるため脅威は低めだが、人生初のSQLインジェクションだったので少し思い出深い。</td>
                         </tr>
                         <tr>
                             <td><a href="https://github.com/MooseLoveti/Trinity-Audio-CVE-Report2">CVE-2025-9886  CVE-2025-9952</a></td>
@@ -50,11 +50,11 @@
                         </tr>
                         <tr>
                             <td><a href="https://github.com/MooseLoveti/Trinity-Audio-CVE-Report">CVE-2025-9196</a></td>
-                            <td>admin/inc/phpinfo.phpが無権限で閲覧可能な脆弱性。攻撃者はこれを足掛かりに新たな攻撃を仕掛けることが出来る。意外とシンプルな脆弱性が残っていてビックリ。</td>
+                            <td>phpinfo.phpが無権限で閲覧可能な脆弱性。攻撃者はこれを足掛かりに新たな攻撃を仕掛けることが出来る。意外とシンプルな脆弱性が残っていてビックリ。</td>
                         </tr>
                         <tr>
                             <td><a href="https://github.com/MooseLoveti/EventON-Lite-CVE-Report">CVE-2025-8091</a></td>
-                            <td>人生で初めて取得したCVEです。管理者がイベント情報を非公開や削除、パスワード認証といった手段で情報を秘匿しても、イベント情報のIDさえ分かれば情報が漏洩してしまうという脆弱性。</td>
+                            <td>人生で初めて取得したCVE。管理者がイベント情報を非公開や削除、パスワード認証といった手段で情報を秘匿しても、イベント情報のIDさえ分かれば情報が漏洩してしまうという脆弱性。</td>
                         </tr>
                     </tbody>
                 </table>
