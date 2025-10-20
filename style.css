@@ -34,7 +34,36 @@ body {
     justify-content: space-between;
 }
 
-.hero-inner { flex: 1; }
+/* アイコン配置用（統合） */
+.hero-inner {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px; /* アイコンとテキストの間隔 */
+}
+
+.hero-inner img {
+  width: 72px;
+  height: 72px;
+  flex: 0 0 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.06);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+}
+
+/* スマホ向け微調整 */
+@media (max-width: 640px) {
+  .hero-inner {
+    gap: 10px;
+  }
+  .hero-inner img {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+  }
+}
+
 .name {
     font-size: 2rem;
     font-weight: 700;
