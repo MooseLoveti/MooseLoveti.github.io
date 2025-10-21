@@ -157,3 +157,37 @@ a:active{ opacity:0.9; }
   .hero, .section-title{ background:#fff; }
   a{ color:#0047ab; text-decoration:underline; }
 }
+@media (max-width: 480px){
+  .container{ padding:16px; }
+
+  .hero{ align-items:flex-start; }
+  .hero-inner{ align-items:flex-start; }
+  .name{ font-size:1.35rem; }
+  .subtitle{ font-size:0.88rem; }
+
+  .table-wrap{ overflow-x:visible; }
+
+  .cve-table{
+    width:100%;
+    min-width:0;
+    table-layout:auto;
+    font-size:0.92rem;
+  }
+
+  .cve-table thead th{
+    position:static;        
+  }
+
+  .cve-table th,
+  .cve-table td{
+    padding:10px 12px;
+    word-break:normal;
+    overflow-wrap:anywhere; 
+  }
+
+  .cve-table td:first-child,
+  .cve-table th:first-child{
+    width:36%;               
+  }
+}
+
