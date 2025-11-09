@@ -30,15 +30,15 @@
                     <tbody>
                         <tr>
                             <td><a href="https://www.wordfence.com/threat-intel/vulnerabilities/id/e3aac40c-1576-45b5-90f8-14ff05c089c7">CVE-2025-10375</a></td>
-                            <td>管理者のみ行える設定パラメータにnonceや権限チェックが無いため、CSRFが可能。だが適切なエスケープがされているため、これ以上の攻撃には昇華できず。CVSSはかなり低め。</td>
+                            <td>管理者のみ行える設定パラメータにnonceや権限チェックが無いため、CSRFが可能。だが適切なエスケープがされているためこれ以上の攻撃には昇華できず。CVSSはかなり低め。</td>
                         </tr>
                         <tr>
                             <td><a href="https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/gspeech/gspeech-tts-wordpress-text-to-speech-plugin-31713-authenticated-admin-sql-injection">CVE-2025-10187</a></td>
-                            <td>管理者限定のSelf SQLインジェクション。かなり脅威度は低めだったがシングルクォーテーションなどを検索ワードに用いると無限ぐるぐるになることもあって、シンプルに報告した方が良さそうだなーと判断。</td>
+                            <td>管理者限定のSelf SQLインジェクション。かなり脅威度は低めだったがシングルクォーテーションなどを検索ワードに用いると無限ロードになることもあって、多くのユーザーが困りそうだなと思い報告。</td>
                         </tr>
                         <tr>
                             <td><a href="https://github.com/MooseLoveti/WP-Links-Page-CVE-Report">CVE-2025-10175</a></td>
-                            <td>人生で初めて報奨金を頂いた。内容としては低権限のユーザーがBlind SQLインジェクションを仕掛けられる。idパラメータのエスケープ不足が原因。この体験談についてはqiitaで<a href="https://qiita.com/MooseLove0308/items/58edbcbfa6128eab2aa4">記事</a>を投稿してます。</td>
+                            <td>人生で初めて報奨金を頂いた。内容としては低権限の攻撃者がBlind SQLインジェクションを実行できる。idパラメータのエスケープ不足が原因。この体験談についてはqiitaで<a href="https://qiita.com/MooseLove0308/items/58edbcbfa6128eab2aa4">記事</a>を投稿してます。</td>
                         </tr>
                         <tr>
                             <td><a href="https://github.com/MooseLoveti/PagSeguro-Connect-Para-WooCommerce-CVE-Report">CVE-2025-10142</a></td>
@@ -46,15 +46,15 @@
                         </tr>
                         <tr>
                             <td><a href="https://github.com/MooseLoveti/Trinity-Audio-CVE-Report2">CVE-2025-9886<br>CVE-2025-9952</a></td>
-                            <td>管理者のみ行える設定パラメータにXSS＆CSRFが同時存在。単体だと脅威は少ないが、これらを合わせるとセッションの乗っ取りが可能。単体のCVSSスコアが低いだけで楽観視するのは良くないと思った。</td>
+                            <td>管理者のみ行える設定パラメータにXSS＆CSRFが同時存在。単体だと脅威は少ないが、これらを合わせるとセッションの乗っ取りが可能(CSRF脆弱性を突いた悪意のあるフォームを仕掛ける→管理者が踏む→XSSが発動。Cookieを盗む)。単体のCVSSスコアが低いだけで楽観視するのは良くないと思った。</td>
                         </tr>
                         <tr>
                             <td><a href="https://github.com/MooseLoveti/Trinity-Audio-CVE-Report">CVE-2025-9196</a></td>
-                            <td>phpinfo.phpが無権限で閲覧可能な脆弱性。攻撃者はこれを足掛かりに新たな攻撃を仕掛けることが出来る。意外とシンプルな脆弱性が残っていてビックリ。</td>
+                            <td>phpinfo.phpが無権限で閲覧可能な脆弱性。攻撃者はこれを足掛かりに新たな攻撃を仕掛けることが出来る。</td>
                         </tr>
                         <tr>
                             <td><a href="https://github.com/MooseLoveti/EventON-Lite-CVE-Report">CVE-2025-8091</a></td>
-                            <td>人生で初めて取得したCVE。管理者がイベント情報を非公開や削除、パスワード認証といった手段で情報を秘匿しても、イベント情報のIDさえ分かれば情報が漏洩してしまうという脆弱性。</td>
+                            <td>人生で初めて取得したCVE。管理者がイベント情報を非公開や削除、パスワード認証といった手段で情報を秘匿しても、イベント情報のIDさえ分かれば情報が漏洩してしまうというもの。</td>
                         </tr>
                     </tbody>
                 </table>
@@ -97,15 +97,15 @@
                     <tbody>
                         <tr>
                             <td>情報処理安全確保支援士試験　合格(未登録)</td>
-                            <td>高校3年で取得。午後2の点数がピッタリ60点で肝を冷やした。今でもたまに夢に出てくる。</td>
+                            <td>高校3年生で取得。午後2が60点ピッタリ</td>
                         </tr>
                         <tr>
                             <td>日商簿記検定2級</td>
-                            <td>高校2年のクリスマスの時期で合格した気がする...あまり覚えてない</td>
+                            <td>商業高校出身なのもあって受験。2度目で合格</td>
                         </tr>
                         <tr>
                             <td>TOEIC Score 670</td>
-                            <td>大学1年生の時、やることが無さすぎて挑戦。ついでに単位免除が出来るらしいので1限に置かれて面倒だった英語の講義をこれのお陰で免除出来た。でも700は欲しかったなあ...リベンジしたい。</td>
+                            <td>英語の資料やWriteUpを読むときに翻訳を毎度使うのは面倒なのもあって、挑戦を決意。ついでに単位免除もしてもらった。</td>
                         </tr>
                         <tr>
                             <td>HackTheBox [Hacker]</td>
