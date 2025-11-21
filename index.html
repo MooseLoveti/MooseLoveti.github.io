@@ -29,6 +29,14 @@
                     </thead>
                     <tbody>
                         <tr>
+                            <td><a href="https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/vitepos-lite/vitepos-point-of-sale-pos-for-woocommerce-330-authenticated-subscriber-arbitrary-file-upload-to-remote-code-execution">CVE-2025-13156</a></td>
+                            <td>低権限から可能な任意ファイルアップロード脆弱性　サーバの環境によってはそのままRCEに直結する。CVSSは8.8　原因は権限チェックがガバガバでログインしていればなんでも通してしまう設計だったこと。</td>
+                        </tr>
+                        <tr>
+                            <td><a href="https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/flo-forms/flo-forms-easy-drag-drop-form-builder-1043-unauthenticated-stored-cross-site-scripting-via-svg-upload">CVE-2025-13159</a></td>
+                            <td>無権限から可能なSVGを経由した格納型XSS　管理画面を開いて即発動...ではなく、管理者が攻撃者が送信したSVGファイルを開く必要がある。しかしuploads配下にSVGファイルを置けるため、攻撃の拡張性は高い。
+                        </tr>
+                        <tr>
                             <td><a href="https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/h5pxapikatchu/snordians-h5pxapikatchu-0417-unauthenticated-stored-cross-site-scripting-via-insert-data">CVE-2025-12904</a></td>
                             <td>無権限から可能な格納型XSS　CVSS7.2とかなり危険度は高め。初のCVSS Highを頂いた。あと、ほんの少し報奨金を貰えた。
                         </tr>
