@@ -29,6 +29,10 @@
                     </thead>
                     <tbody>
                         <tr>
+                            <td><a href="https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/postgallery/postgallery-1125-authenticated-subscriber-arbitrary-file-upload">CVE-2025-13543</a></td>
+                            <td>低権限からウェブルートディレクトリ直下にシェルを仕込むことが可能なRCE 通常はuploadsディレクトリにファイルが格納されるため、PHPを置いてもコア側の処理で実行出来ないようになっているが、ディレクトリトラバーサルによって回避可能。それに加えてファイルタイプのチェック、権限チェックが甘いという要因も重なり、CVSSは高めの8.8</td>
+                        </tr>
+                        <tr>
                             <td><a href="https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/vitepos-lite/vitepos-point-of-sale-pos-for-woocommerce-330-authenticated-subscriber-arbitrary-file-upload-to-remote-code-execution">CVE-2025-13156</a></td>
                             <td>低権限から可能な任意ファイルアップロード脆弱性　サーバの環境によってはそのままRCEに直結する。CVSSは8.8　原因は権限チェックがガバガバでログインしていればなんでも通してしまう設計だったこと。</td>
                         </tr>
@@ -84,6 +88,10 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td><a href="https://github.com/MooseLoveti/WordFence_BugHuntingDatabase">WordFence_BugHuntingDatabase</a></td>
+                            <td>Flaskで作成。WordPress Vulnerability Databaseが直近1週間以内に公開した脆弱性の「タイトル」「アクティブインストール数」「公開日」「報奨金見積り」を一覧で表示するWebアプリケーション。WordPress Vulnerability DatabaseのAPIではアクティブインストール数と報奨金見積りは取得できないため、他APIを用いてslug名からアクティブインストール数を取得し、これらの情報を用いて報奨金を計算した。</td>
+                        </tr>
                         <tr>
                             <td><a href="https://github.com/MooseLoveti/test">checkIP.py</a></td>
                             <td>IPアドレスを入力するとVirusTotalの結果を自動で取得。危険サイトか否かを複数の機関(90個くらい)が判別した結果を取得することが出来る。ひとまずpcapファイルからIPのみを抽出して脳死でこのプログラムを投げたら調査の足掛かりになりやすい。</td>
