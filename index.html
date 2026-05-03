@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Takihana ShotaのCVE報告、開発物、資格、活動実績、記事をまとめたポートフォリオです。">
+    <title>Takihana Shota | Security Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav" aria-label="主要ナビゲーション">
+            <a class="brand" href="#top">Takihana Shota</a>
+            <div class="nav-links">
+                <a href="#cves">CVE</a>
+                <a href="#projects">開発物</a>
+                <a href="#achievements">実績</a>
+                <a href="#articles">記事</a>
+                <a href="#focus">Focus</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="top">
+        <section class="hero">
+            <div class="hero-main">
+                <div class="hero-title">
+                    <p class="label">Security Portfolio</p>
+                    <h1>Takihana Shota</h1>
+                    <p class="lead">CVE報告、バグハント、セキュリティ関連ツール、資格・活動実績の一覧。</p>
+                </div>
+                <div class="identity">
+                    <img class="avatar" src="https://github.com/MooseLoveti.png" alt="MooseLoveのプロフィール画像">
+                    <div>
+                        <p class="identity-name">Web Security / Vulnerability Research</p>
+                        <div class="links" aria-label="外部リンク">
+                            <a href="https://github.com/MooseLoveti" target="_blank" rel="noreferrer">GitHub</a>
+                            <a href="https://qiita.com/MooseLove0308" target="_blank" rel="noreferrer">Qiita</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="cves" class="section">
+            <div class="section-head">
+                <p class="label">01 / CVE Reports</p>
+                <h2>発見・報告したCVE</h2>
+            </div>
+
+            <div class="record-list">
+                <article class="record">
+                    <div class="record-meta">
+                        <span class="tag">File Upload / RCE</span>
+                        <a href="https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/postgallery/postgallery-1125-authenticated-subscriber-arbitrary-file-upload" target="_blank" rel="noreferrer">CVE-2025-13543</a>
+                    </div>
+                    <p>低権限ユーザーから任意ファイルアップロードが可能。ファイル検証、権限チェック、パストラバーサル対策の不備によりRCEにつながる可能性を報告。</p>
+                </article>
+
+                <article class="record">
+                    <div class="record-meta">
+                        <span class="tag">File Upload / RCE</span>
+                        <a href="https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/vitepos-lite/vitepos-point-of-sale-pos-for-woocommerce-330-authenticated-subscriber-arbitrary-file-upload-to-remote-code-execution" target="_blank" rel="noreferrer">CVE-2025-13156</a>
+                    </div>
+                    <p>ログインユーザーに対する権限チェック不備により、環境次第でRCEに発展する任意ファイルアップロードを報告。</p>
+                </article>
+
+                <article class="record">
+                    <div class="record-meta">
+                        <span class="tag">Stored XSS</span>
+                        <a href="https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/flo-forms/flo-forms-easy-drag-drop-form-builder-1043-unauthenticated-stored-cross-site-scripting-via-svg-upload" target="_blank" rel="noreferrer">CVE-2025-13159</a>
+                    </div>
+                    <p>未認証で到達可能なSVGアップロード経路を利用した格納型XSSを報告。</p>
+                </article>
+
+                <article class="record">
+                    <div class="record-meta">
+                        <span class="tag">Stored XSS</span>
+                        <a href="https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/h5pxapikatchu/snordians-h5pxapikatchu-0417-unauthenticated-stored-cross-site-scripting-via-insert-data" target="_blank" rel="noreferrer">CVE-2025-12904</a>
+                    </div>
+                    <p>未認証で利用できる入力経路から格納型XSSが成立する問題を報告。初のCVSS High。</p>
+                </article>
+
+                <article class="record">
+                    <div class="record-meta">
+                        <span class="tag">CSRF</span>
+                        <a href="https://www.wordfence.com/threat-intel/vulnerabilities/id/e3aac40c-1576-45b5-90f8-14ff05c089c7" target="_blank" rel="noreferrer">CVE-2025-10375</a>
+                    </div>
+                    <p>管理者向け設定処理でnonceと権限チェックが不足していたCSRFを報告。</p>
+                </article>
+
+                <article class="record">
+                    <div class="record-meta">
+                        <span class="tag">SQL Injection</span>
+                        <a href="https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/gspeech/gspeech-tts-wordpress-text-to-speech-plugin-31713-authenticated-admin-sql-injection" target="_blank" rel="noreferrer">CVE-2025-10187</a>
+                    </div>
+                    <p>管理者権限で発生するSQLインジェクションを報告。検索処理の入力値処理とSQL組み立てに起因。</p>
+                </article>
+
+                <article class="record">
+                    <div class="record-meta">
+                        <span class="tag">Blind SQL Injection</span>
+                        <a href="https://github.com/MooseLoveti/WP-Links-Page-CVE-Report" target="_blank" rel="noreferrer">CVE-2025-10175</a>
+                    </div>
+                    <p>低権限ユーザーから実行可能なBlind SQLインジェクションを報告。初めて報奨金を獲得。</p>
+                </article>
+
+                <article class="record">
+                    <div class="record-meta">
+                        <span class="tag">SQL Injection</span>
+                        <a href="https://github.com/MooseLoveti/PagSeguro-Connect-Para-WooCommerce-CVE-Report" target="_blank" rel="noreferrer">CVE-2025-10142</a>
+                    </div>
+                    <p>Shop Manager以上の権限で発生するSQLインジェクションを報告。</p>
+                </article>
+
+                <article class="record">
+                    <div class="record-meta">
+                        <span class="tag">XSS / CSRF</span>
+                        <a href="https://github.com/MooseLoveti/Trinity-Audio-CVE-Report2" target="_blank" rel="noreferrer">CVE-2025-9886 / CVE-2025-9952</a>
+                    </div>
+                    <p>管理者向け設定値に存在するXSSとCSRFの組み合わせを報告。</p>
+                </article>
+
+                <article class="record">
+                    <div class="record-meta">
+                        <span class="tag">Information Disclosure</span>
+                        <a href="https://github.com/MooseLoveti/Trinity-Audio-CVE-Report" target="_blank" rel="noreferrer">CVE-2025-9196</a>
+                    </div>
+                    <p>phpinfo.phpが未認証で閲覧可能な情報漏えいを報告。</p>
+                </article>
+
+                <article class="record">
+                    <div class="record-meta">
+                        <span class="tag">Information Disclosure</span>
+                        <a href="https://github.com/MooseLoveti/EventON-Lite-CVE-Report" target="_blank" rel="noreferrer">CVE-2025-8091</a>
+                    </div>
+                    <p>非公開・削除済み・パスワード保護済みイベント情報の漏えいを報告。初めて取得したCVE。</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="section-head">
+                <p class="label">02 / Projects</p>
+                <h2>開発物</h2>
+            </div>
+
+            <div class="project-grid">
+                <article class="project">
+                    <div>
+                        <span class="tag">Flask / React</span>
+                        <h3><a href="https://github.com/MooseLoveti/Bug-Hunter-Lifetime-Earnings" target="_blank" rel="noreferrer">Bug Hunter Lifetime Earnings</a></h3>
+                    </div>
+                    <p>Wordfenceに登録されているバグハンターの公開実績と推定報奨金を可視化するWebアプリケーション。</p>
+                </article>
+
+                <article class="project">
+                    <div>
+                        <span class="tag">Flask / API</span>
+                        <h3><a href="https://github.com/MooseLoveti/WordFence_BugHuntingDatabase" target="_blank" rel="noreferrer">WordFence Bug Hunting Database</a></h3>
+                    </div>
+                    <p>直近公開されたWordPress脆弱性、アクティブインストール数、公開日、報奨金見積りを一覧化する調査支援ツール。</p>
+                </article>
+
+                <article class="project">
+                    <div>
+                        <span class="tag">Python / VirusTotal API</span>
+                        <h3><a href="https://github.com/MooseLoveti/test" target="_blank" rel="noreferrer">checkIP.py</a></h3>
+                    </div>
+                    <p>IPアドレスを入力し、VirusTotalの判定結果を取得する調査補助スクリプト。</p>
+                </article>
+
+                <article class="project">
+                    <div>
+                        <span class="tag">Python / WordPress API</span>
+                        <h3><a href="https://github.com/MooseLoveti/test" target="_blank" rel="noreferrer">searchPlugin.py</a></h3>
+                    </div>
+                    <p>WordPressプラグイン調査時の対象探索とダウンロードを補助するスクリプト。</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="achievements" class="section">
+            <div class="section-head">
+                <p class="label">03 / Achievements</p>
+                <h2>資格・活動実績</h2>
+            </div>
+
+            <div class="achievement-table" role="list">
+                <div class="achievement" role="listitem">
+                    <span>2026.03</span>
+                    <strong>セキュリティ・キャンプ2026コネクト 脅威クラス 修了</strong>
+                </div>
+                <div class="achievement" role="listitem">
+                    <span>2026.03</span>
+                    <strong>PicoCTF2026 #30（JPStudents）</strong>
+                </div>
+                <div class="achievement" role="listitem">
+                    <span>2025.07</span>
+                    <strong>公開済みCVE獲得</strong>
+                </div>
+                <div class="achievement" role="listitem">
+                    <span>2025.04</span>
+                    <strong>OSSにて初脆弱性報告＆CVE発行（非公開）</strong>
+                </div>
+                <div class="achievement" role="listitem">
+                    <span>2025.03</span>
+                    <strong>HackerOneで反射型XSS脆弱性報告（現在トリアージ中）</strong>
+                </div>
+                <div class="achievement" role="listitem">
+                    <span>2024.12</span>
+                    <strong>Hack The Box Hacker</strong>
+                </div>
+                <div class="achievement" role="listitem">
+                    <span>2024.09</span>
+                    <strong>TOEIC Score 670</strong>
+                </div>
+                <div class="achievement" role="listitem">
+                    <span>2024.05</span>
+                    <strong>AtCoder 茶色(Python)</strong>
+                </div>
+                <div class="achievement" role="listitem">
+                    <span>2023.04</span>
+                    <strong>情報処理安全確保支援士試験 合格（未登録）</strong>
+                </div>
+                <div class="achievement" role="listitem">
+                    <span>2022.12</span>
+                    <strong>日商簿記検定2級 合格</strong>
+                </div>
+                <div class="achievement" role="listitem">
+                    <span>2022.10</span>
+                    <strong>応用情報技術者試験 合格</strong>
+                </div>
+                <div class="achievement" role="listitem">
+                    <span>2022.09</span>
+                    <strong>基本情報技術者試験 合格</strong>
+                </div>
+            </div>
+        </section>
+
+        <section id="articles" class="section">
+            <div class="section-head">
+                <p class="label">04 / Articles</p>
+                <h2>記事</h2>
+            </div>
+
+            <div class="article-list">
+                <article class="article-record">
+                    <span class="tag">2026-04-19</span>
+                    <h3><a href="https://qiita.com/MooseLove0308/items/1eb1dd3d6db9cd9a0fb7" target="_blank" rel="noreferrer">実際のランサムウェア脅迫文を見つけたので手口を解説する【The GENTLEMEN ?】</a></h3>
+                </article>
+
+                <article class="article-record">
+                    <span class="tag">2026-04-05</span>
+                    <h3><a href="https://qiita.com/MooseLove0308/items/f163705d9d7636c45941" target="_blank" rel="noreferrer">セキュリティ・キャンプ2026コネクト参加レポート</a></h3>
+                </article>
+
+                <article class="article-record">
+                    <span class="tag">2026-04-04</span>
+                    <h3><a href="https://qiita.com/MooseLove0308/items/8700562415ffe4efd8d3" target="_blank" rel="noreferrer">セキュリティ・キャンプ2026コネクト 脅威クラス課題晒し</a></h3>
+                </article>
+
+                <article class="article-record">
+                    <span class="tag">2026-03-24</span>
+                    <h3><a href="https://qiita.com/MooseLove0308/items/4e7312edb08d7f5b8fdf" target="_blank" rel="noreferrer">PicoCTF2026 Writeup(Pwnableのみ)</a></h3>
+                </article>
+
+                <article class="article-record">
+                    <span class="tag">2026-03-02</span>
+                    <h3><a href="https://qiita.com/MooseLove0308/items/243abe645baa3f04c53b" target="_blank" rel="noreferrer">【🍔】ミーム化している「某Youtuber偽バー〇ンCM情報漏洩事件」について調べてみたら、思った以上に突っ込みどころ満載だった</a></h3>
+                </article>
+
+                <article class="article-record">
+                    <span class="tag">2026-02-23</span>
+                    <h3><a href="https://qiita.com/MooseLove0308/items/16e9aba12e872021c150" target="_blank" rel="noreferrer">自動ハッキングツール「PentestGPT」を試してみたけど、意外とデメリットが多かった。</a></h3>
+                </article>
+
+                <article class="article-record">
+                    <span class="tag">2025-10-11</span>
+                    <h3><a href="https://qiita.com/MooseLove0308/items/58edbcbfa6128eab2aa4" target="_blank" rel="noreferrer">【夢なんてない】バグバウンティで報奨金を獲得するのに1年以上もかかった話</a></h3>
+                </article>
+
+                <article class="article-record">
+                    <span class="tag">2025-02-25</span>
+                    <h3><a href="https://qiita.com/MooseLove0308/items/ceacbe538448d0b10bfb" target="_blank" rel="noreferrer">【バグバウンティ】資格マンだった俺が脆弱性を報告するまで</a></h3>
+                </article>
+            </div>
+
+        </section>
+
+        <section id="focus" class="section">
+            <div class="section-head">
+                <p class="label">05 / Focus Areas</p>
+                <h2>Skills & Interests</h2>
+            </div>
+
+            <div class="focus-grid">
+                <article class="focus-card">
+                    <span>Favorite Languages</span>
+                    <strong>Python / PHP / C</strong>
+                </article>
+
+                <article class="focus-card">
+                    <span>CTF</span>
+                    <strong>Pwnable</strong>
+                </article>
+
+                <article class="focus-card">
+                    <span>Security Interests</span>
+                    <strong>Penetration Testing / Threat Intelligence / Malware Analysis</strong>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <small>&copy; <span id="year"></span> Takihana Shota </small>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
