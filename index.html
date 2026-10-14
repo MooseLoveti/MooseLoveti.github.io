@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -13,6 +15,7 @@
             <a class="brand" href="#top">Takihana Shota</a>
             <div class="nav-links">
                 <a href="#cves">CVE</a>
+                <a href="#notes">ノート</a>
                 <a href="#projects">開発物</a>
                 <a href="#achievements">実績</a>
                 <a href="#articles">記事</a>
@@ -140,9 +143,33 @@
             </div>
         </section>
 
+        <section id="notes" class="section">
+            <div class="section-head">
+                <p class="label">02 / Notes</p>
+                <h2>学習ノート</h2>
+            </div>
+
+            {% assign notes = site.pages | where_exp: "n", "n.path contains 'notes/'" | where_exp: "n", "n.path != 'notes/index.md'" | sort: "date" | reverse %}
+            {% if notes.size > 0 %}
+            <div class="article-list">
+                {% for note in notes limit: 5 %}
+                <article class="article-record">
+                    <span class="tag">{{ note.date | date: "%Y-%m-%d" }}</span>
+                    <h3><a href="{{ note.url }}">{{ note.title }}</a></h3>
+                    {% if note.summary %}<p>{{ note.summary }}</p>{% endif %}
+                    {% if note.tags.size > 0 %}<div class="tag-row">{% for tag in note.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>{% endif %}
+                </article>
+                {% endfor %}
+            </div>
+            <p class="more-link"><a href="/notes/">ノート一覧を見る</a></p>
+            {% else %}
+            <p>準備中</p>
+            {% endif %}
+        </section>
+
         <section id="projects" class="section">
             <div class="section-head">
-                <p class="label">02 / Projects</p>
+                <p class="label">03 / Projects</p>
                 <h2>開発物</h2>
             </div>
 
@@ -183,7 +210,7 @@
 
         <section id="achievements" class="section">
             <div class="section-head">
-                <p class="label">03 / Achievements</p>
+                <p class="label">04 / Achievements</p>
                 <h2>資格・活動実績</h2>
             </div>
 
@@ -261,7 +288,7 @@
 
         <section id="articles" class="section">
             <div class="section-head">
-                <p class="label">04 / Articles</p>
+                <p class="label">05 / Articles</p>
                 <h2>記事</h2>
             </div>
             
@@ -321,7 +348,7 @@
 
         <section id="focus" class="section">
             <div class="section-head">
-                <p class="label">05 / Focus Areas</p>
+                <p class="label">06 / Focus Areas</p>
                 <h2>Skills & Interests</h2>
             </div>
 
