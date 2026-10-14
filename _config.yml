@@ -1,0 +1,14 @@
+title: Takihana Shota
+url: https://takihana.dev
+lang: ja
+
+defaults:
+  - scope:
+      path: notes
+    values:
+      layout: note
+
+exclude:
+  - .claude
+  - .github
+  - notes/README.md
