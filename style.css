@@ -12,6 +12,7 @@
     --focus-ring: #1d4ed8;
     --radius: 8px;
     --max: 1120px;
+    --note-max: 720px;
     --header-h: 63px;
 }
 
@@ -406,7 +407,133 @@ a:focus-visible {
 }
 
 .note-body {
+    max-width: var(--note-max);
     margin-top: 28px;
+    line-height: 1.85;
+    overflow-wrap: anywhere;
+}
+
+.note-body > :first-child {
+    margin-top: 0;
+}
+
+.note-body h2,
+.note-body h3,
+.note-body h4 {
+    margin: 2em 0 0.6em;
+    line-height: 1.4;
+}
+
+.note-body h2 {
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid var(--line);
+    font-size: 1.5rem;
+}
+
+.note-body h3 {
+    font-size: 1.25rem;
+}
+
+.note-body h4 {
+    font-size: 1.05rem;
+}
+
+.note-body p,
+.note-body ul,
+.note-body ol,
+.note-body pre,
+.note-body blockquote,
+.note-body table {
+    margin: 0 0 1.2em;
+}
+
+.note-body ul,
+.note-body ol {
+    padding-left: 1.6em;
+}
+
+.note-body li + li {
+    margin-top: 0.3em;
+}
+
+.note-body a {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+}
+
+.note-body a:hover {
+    text-decoration-thickness: 2px;
+}
+
+.note-body blockquote {
+    padding: 4px 16px;
+    border-left: 4px solid var(--strong-line);
+    background: var(--soft);
+    color: var(--muted);
+}
+
+.note-body blockquote > :last-child {
+    margin-bottom: 0;
+}
+
+.note-body code {
+    padding: 0.15em 0.4em;
+    border-radius: var(--radius);
+    background: var(--soft);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    overflow-wrap: anywhere;
+}
+
+.note-body pre {
+    max-width: 100%;
+    padding: 14px 16px;
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--soft);
+    line-height: 1.6;
+}
+
+.note-body pre code {
+    padding: 0;
+    background: none;
+    font-size: 0.88rem;
+    overflow-wrap: normal;
+    white-space: pre;
+}
+
+.note-body table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+}
+
+.note-body th,
+.note-body td {
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    text-align: left;
+    overflow-wrap: normal;
+}
+
+.note-body th {
+    background: var(--soft);
+    white-space: nowrap;
+}
+
+.note-body img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+}
+
+.note-body hr {
+    margin: 2em 0;
+    border: 0;
+    border-top: 1px solid var(--line);
 }
 
 @media (max-width: 900px) {
@@ -437,6 +564,30 @@ a:focus-visible {
 @media (max-width: 600px) {
     .note {
         width: min(760px, calc(100% - 24px));
+    }
+
+    .note-body {
+        line-height: 1.8;
+    }
+
+    .note-body h2 {
+        font-size: 1.3rem;
+    }
+
+    .note-body h3 {
+        font-size: 1.12rem;
+    }
+
+    .note-body h4 {
+        font-size: 1rem;
+    }
+
+    .note-body pre {
+        padding: 12px;
+    }
+
+    .note-body blockquote {
+        padding: 2px 12px;
     }
 
     .nav,
