@@ -340,6 +340,31 @@ a:hover {
     color: var(--muted);
 }
 
+.note {
+    width: min(760px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 54px 0;
+}
+
+.note-head h1 {
+    margin: 0 0 8px;
+    font-size: 2rem;
+    line-height: 1.35;
+}
+
+.note-head time {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.note-tags {
+    margin: 8px 0 0;
+}
+
+.note-body {
+    margin-top: 28px;
+}
+
 @media (max-width: 900px) {
     .hero-main,
     .section {
@@ -357,6 +382,10 @@ a:hover {
 }
 
 @media (max-width: 600px) {
+    .note {
+        width: min(760px, calc(100% - 24px));
+    }
+
     .nav,
     .hero,
     .section,

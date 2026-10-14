@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if page.summary %}<meta name="description" content="{{ page.summary | escape }}">{% endif %}
+    <title>{{ page.title | escape }} | {{ site.title }}</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    {% include header.html %}
+
+    <main class="note">
+        <article>
+            <header class="note-head">
+                <h1>{{ page.title | escape }}</h1>
+                {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>{% endif %}
+                {% if page.tags %}
+                <p class="note-tags">{% for tag in page.tags %}<span class="tag">{{ tag | escape }}</span> {% endfor %}</p>
+                {% endif %}
+            </header>
+            <div class="note-body">
+                {{ content }}
+            </div>
+        </article>
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>
