@@ -1,0 +1,75 @@
+name: Claude plan
+
+# Manually started from the Actions tab. Claude reads the site and files
+# improvement issues with labels. It never adds `claude-go`; that label is the
+# owner's approval to start implementation.
+
+on:
+  workflow_dispatch:
+    inputs:
+      direction:
+        description: "改修の方向性（空欄なら Claude が自由に判断）"
+        required: false
+        type: string
+        default: ""
+      max_issues:
+        description: "作成する issue の上限数"
+        required: false
+        type: number
+        default: 8
+
+permissions: {}
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    concurrency:
+      group: claude-plan
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      issues: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+
+      - uses: anthropics/claude-code-action@6fed3ca145920b639991cb756090506e1bcaf515 # v1.0.245
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            REPO: ${{ github.repository }}
+
+            このリポジトリのホームページ（index.html / style.css）を読み、改修計画を立てて GitHub issue として登録してください。
+
+            改修の方向性（オーナー指定。空なら自由に判断）:
+            ${{ inputs.direction }}
+
+            手順:
+            1. `gh issue list --state open --limit 100` で既存の issue を確認し、重複する issue は作らない。
+            2. `gh label list` で既存ラベルを確認する。必要なら次のラベルを `gh label create` で作る（既にあれば作らない）:
+               - 種類: `design`, `content`, `a11y`, `performance`, `seo`, `refactor`
+               - 優先度: `priority:high`, `priority:medium`, `priority:low`
+            3. 改修案を、1 つの PR で完結する粒度に分ける。依存関係がある場合は、先にやるべきものを priority:high にする。
+            4. issue は最大 ${{ inputs.max_issues }} 件まで、`gh issue create` で作る。種類ラベル 1 つと優先度ラベル 1 つを必ず付ける。
+            5. `claude-go` ラベルは絶対に付けない（オーナーの承認用）。
+
+            issue の書式（日本語）:
+            - タイトル: 何をするかが一目でわかる一文
+            - 本文:
+              ## 背景
+              なぜこの変更が必要か（現状の問題点を、該当ファイルと行番号つきで）
+              ## やること
+              - [ ] 具体的な作業項目
+              ## 完了条件
+              - レビューで確認できる条件
+              ## 対象ファイル
+              - 変更が見込まれるファイル
+
+            最後に、作成した issue の番号とタイトルの一覧を出力してください。
+          claude_args: |
+            --max-turns 40
+            --allowedTools "Bash(gh issue list:*),Bash(gh issue view:*),Bash(gh issue create:*),Bash(gh label list:*),Bash(gh label create:*)"
