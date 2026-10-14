@@ -1,5 +1,6 @@
 ---
 title: ノート一覧
+layout: null
 ---
 <!DOCTYPE html>
 <html lang="ja">
