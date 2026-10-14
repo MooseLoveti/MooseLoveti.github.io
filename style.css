@@ -11,6 +11,7 @@
     --shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
     --radius: 8px;
     --max: 1120px;
+    --header-h: 63px;
 }
 
 * {
@@ -191,6 +192,11 @@ a:hover {
     border-top: 1px solid var(--line);
 }
 
+.section,
+#top {
+    scroll-margin-top: var(--header-h);
+}
+
 .hero + .section {
     border-top: 0;
 }
@@ -353,16 +359,41 @@ a:hover {
         width: min(var(--max), calc(100% - 24px));
     }
 
+    :root {
+        --header-h: 53px;
+    }
+
     .nav {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 12px 0;
-        gap: 8px;
+        min-height: 52px;
+        gap: 4px;
+    }
+
+    .brand {
+        flex-shrink: 0;
     }
 
     .nav-links {
-        width: 100%;
+        flex: 1;
+        min-width: 0;
+        gap: 0;
         overflow-x: auto;
+        scrollbar-width: none;
+        padding-right: 28px;
+        -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+        mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links a {
+        display: inline-flex;
+        align-items: center;
+        flex-shrink: 0;
+        min-height: 44px;
+        padding: 0 12px;
+        white-space: nowrap;
     }
 
     .hero {
