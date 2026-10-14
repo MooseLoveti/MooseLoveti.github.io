@@ -99,7 +99,7 @@ a:hover {
 
 .hero-main {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 520px;
+    grid-template-columns: minmax(0, 1fr) clamp(380px, 42vw, 520px);
     gap: 32px;
     align-items: center;
     border-bottom: 1px solid var(--line);
@@ -116,7 +116,7 @@ a:hover {
 
 .hero h1 {
     margin: 0;
-    font-size: 4.1rem;
+    font-size: clamp(3rem, 5vw, 4.1rem);
     line-height: 1.05;
     letter-spacing: 0;
 }
@@ -185,8 +185,8 @@ a:hover {
 
 .section {
     display: grid;
-    grid-template-columns: 230px minmax(0, 1fr);
-    gap: 42px;
+    grid-template-columns: clamp(170px, 20vw, 230px) minmax(0, 1fr);
+    gap: clamp(28px, 4vw, 42px);
     padding: 54px 0;
     border-top: 1px solid var(--line);
 }
@@ -209,7 +209,7 @@ a:hover {
 
 .record {
     display: grid;
-    grid-template-columns: 310px minmax(0, 1fr);
+    grid-template-columns: clamp(220px, 28vw, 310px) minmax(0, 1fr);
     gap: 24px;
     padding: 18px 0;
     border-bottom: 1px solid var(--line);
