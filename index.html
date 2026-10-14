@@ -175,7 +175,7 @@
             <div class="article-list">
                 {% for note in notes limit: 5 %}
                 <article class="article-record">
-                    <span class="tag">{{ note.date | date: "%Y-%m-%d" }}</span>
+                    <span class="tag">{{ note.date | date: "%Y-%m-%d" }}{% if note.category %} · {{ note.category }}{% if note.topic %} / {{ note.topic }}{% endif %}{% endif %}</span>
                     <h3><a href="{{ note.url }}">{{ note.title }}</a></h3>
                     {% if note.summary %}<p>{{ note.summary }}</p>{% endif %}
                     {% if note.tags.size > 0 %}<div class="tag-row">{% for tag in note.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>{% endif %}

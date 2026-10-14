@@ -13,8 +13,14 @@
     <main class="note">
         <article>
             <header class="note-head">
+                <nav class="note-breadcrumb" aria-label="パンくずリスト">
+                    <a href="/notes/">ノート一覧</a>
+                    {% if page.category %}<span aria-hidden="true">/</span> <a href="/notes/#{{ page.category | slugify }}">{{ page.category | escape }}</a>{% endif %}
+                    {% if page.topic %}<span aria-hidden="true">/</span> <span>{{ page.topic | escape }}</span>{% endif %}
+                </nav>
                 <h1>{{ page.title | escape }}</h1>
                 {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>{% endif %}
+                {% if page.updated %}<span class="note-updated">（更新 <time datetime="{{ page.updated | date_to_xmlschema }}">{{ page.updated | date: "%Y-%m-%d" }}</time>）</span>{% endif %}
                 {% if page.tags %}
                 <p class="note-tags">{% for tag in page.tags %}<span class="tag">{{ tag | escape }}</span> {% endfor %}</p>
                 {% endif %}
