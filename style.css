@@ -337,7 +337,8 @@ a:focus-visible {
 }
 
 .project h3,
-.article-record h3 {
+.article-record h3,
+.article-record h5 {
     overflow-wrap: anywhere;
     margin: 10px 0 0;
     font-size: 1rem;

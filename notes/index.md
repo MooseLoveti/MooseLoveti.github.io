@@ -48,7 +48,7 @@ layout: null
                         {% for note in topic_notes %}
                         <article class="article-record">
                             <span class="tag">{{ note.date | date: "%Y-%m-%d" }}{% if note.updated %}（更新 {{ note.updated | date: "%Y-%m-%d" }}）{% endif %}</span>
-                            <h3><a href="{{ note.url }}">{{ note.title }}</a></h3>
+                            <h5><a href="{{ note.url }}">{{ note.title }}</a></h5>
                             {% if note.summary %}<p>{{ note.summary }}</p>{% endif %}
                             {% if note.tags.size > 0 %}<div class="tag-row">{% for tag in note.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>{% endif %}
                         </article>
