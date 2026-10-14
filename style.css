@@ -257,6 +257,17 @@ a:hover {
     gap: 12px;
 }
 
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.more-link {
+    margin: 14px 0 0;
+    font-weight: 900;
+}
+
 .focus-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
