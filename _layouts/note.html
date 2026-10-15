@@ -13,8 +13,15 @@
     <main class="note">
         <article>
             <header class="note-head">
+                {% assign parts = page.dir | split: "/" %}
+                <nav class="note-breadcrumb" aria-label="パンくずリスト">
+                    <a href="/notes/">学習ノート</a>
+                    {% if page.category %}<span aria-hidden="true">/</span> <a href="/notes/{{ parts[2] }}/">{{ page.category | escape }}</a>{% endif %}
+                    {% if page.topic %}<span aria-hidden="true">/</span> <a href="/notes/{{ parts[2] }}/{{ parts[3] }}/">{{ page.topic | escape }}</a>{% endif %}
+                </nav>
                 <h1>{{ page.title | escape }}</h1>
                 {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>{% endif %}
+                {% if page.updated %}<span class="note-updated">（追記 <time datetime="{{ page.updated | date_to_xmlschema }}">{{ page.updated | date: "%Y-%m-%d" }}</time>）</span>{% endif %}
                 {% if page.tags %}
                 <p class="note-tags">{% for tag in page.tags %}<span class="tag">{{ tag | escape }}</span> {% endfor %}</p>
                 {% endif %}

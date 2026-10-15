@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | escape }} | 学習ノート | {{ site.title }}</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    {% include header.html %}
+
+    {% comment %}
+    One layout for every level of notes/: the root lists genres, a genre
+    folder (notes/<genre>/) lists topics, and a topic folder
+    (notes/<genre>/<topic>/) lists its notes. The level comes from page.dir.
+    {% endcomment %}
+    {% assign base = page.dir %}
+    {% assign parts = base | split: "/" %}
+    {% assign depth = parts | size %}
+    {% assign notes = site.pages | where: "layout", "note" | where_exp: "n", "n.dir contains base" %}
+
+    <main class="note">
+        <header class="note-head">
+            <nav class="note-breadcrumb" aria-label="パンくずリスト">
+                <a href="/#notes">トップ</a>
+                <span aria-hidden="true">/</span>
+                {% if depth > 2 %}<a href="/notes/">学習ノート</a>{% else %}<span>学習ノート</span>{% endif %}
+                {% if depth > 3 %}
+                <span aria-hidden="true">/</span> <a href="/notes/{{ parts[2] }}/">{{ notes.first.category | escape }}</a>
+                {% endif %}
+            </nav>
+            <h1>{{ page.title | escape }}</h1>
+            <p class="notes-count">{{ notes.size }} 件のノート</p>
+        </header>
+
+        {% if notes.size == 0 %}
+        <p>準備中</p>
+        {% elsif depth < 4 %}
+        {% if depth == 2 %}{% assign folders = notes | group_by: "category" | sort: "name" %}{% else %}{% assign folders = notes | group_by: "topic" | sort: "name" %}{% endif %}
+        <ul class="folder-grid">
+            {% for folder in folders %}
+            {% assign first_parts = folder.items.first.dir | split: "/" %}
+            {% assign latest = folder.items | sort: "date" | last %}
+            <li>
+                <a class="folder-card" href="/notes/{{ first_parts[2] }}/{% if depth == 3 %}{{ first_parts[3] }}/{% endif %}">
+                    <span class="folder-icon" aria-hidden="true">📁</span>
+                    <span class="folder-name">{{ folder.name | default: "その他" | escape }}</span>
+                    <span class="folder-meta">{{ folder.size }} 件 · 最新 {{ latest.date | date: "%Y-%m-%d" }}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        {% assign sorted = notes | sort: "date" | reverse %}
+        <div class="article-list">
+            {% for note in sorted %}
+            <article class="article-record">
+                <span class="tag">{{ note.date | date: "%Y-%m-%d" }}{% if note.updated %}（追記 {{ note.updated | date: "%Y-%m-%d" }}）{% endif %}</span>
+                <h2><a href="{{ note.url }}">{{ note.title | escape }}</a></h2>
+                {% if note.summary %}<p>{{ note.summary | escape }}</p>{% endif %}
+                {% if note.tags.size > 0 %}<div class="tag-row">{% for tag in note.tags %}<span class="tag">{{ tag | escape }}</span>{% endfor %}</div>{% endif %}
+            </article>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </main>
+
+    {% include footer.html %}
+</body>
+</html>
