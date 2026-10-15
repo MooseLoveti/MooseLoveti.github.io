@@ -170,10 +170,10 @@
                 <h2>学習ノート</h2>
             </div>
 
-            {% assign notes = site.pages | where_exp: "n", "n.path contains 'notes/'" | where_exp: "n", "n.path != 'notes/index.md'" | sort: "date" | reverse %}
+            {% assign notes = site.pages | where: "layout", "note" | sort: "date" | reverse %}
             {% if notes.size > 0 %}
             <div class="article-list">
-                {% for note in notes limit: 5 %}
+                {% for note in notes limit: 4 %}
                 <article class="article-record">
                     <span class="tag">{{ note.date | date: "%Y-%m-%d" }}{% if note.category %} · {{ note.category }}{% if note.topic %} / {{ note.topic }}{% endif %}{% endif %}</span>
                     <h3><a href="{{ note.url }}">{{ note.title }}</a></h3>
@@ -182,7 +182,7 @@
                 </article>
                 {% endfor %}
             </div>
-            <p class="more-link"><a href="/notes/">ノート一覧を見る</a></p>
+            <p class="more-link"><a href="/notes/">すべてのノートを見る（{{ notes.size }} 件）</a></p>
             {% else %}
             <p>準備中</p>
             {% endif %}

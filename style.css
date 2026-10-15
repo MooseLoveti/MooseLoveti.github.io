@@ -337,8 +337,8 @@ a:focus-visible {
 }
 
 .project h3,
-.article-record h3,
-.article-record h5 {
+.article-record h2,
+.article-record h3 {
     overflow-wrap: anywhere;
     margin: 10px 0 0;
     font-size: 1rem;
@@ -421,37 +421,51 @@ a:focus-visible {
     font-size: 0.9rem;
 }
 
-.note-category-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 0 0 28px;
+.notes-count {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
 }
 
-.note-category-nav a {
+.folder-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+    margin: 28px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.folder-card {
+    display: grid;
+    gap: 4px;
+    height: 100%;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper);
     text-decoration: none;
 }
 
-.note-category {
-    scroll-margin-top: var(--header-h);
-    margin: 0 0 36px;
+.folder-card:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
 }
 
-.note-category > h3 {
-    margin: 0 0 16px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--line);
-    font-size: 1.3rem;
+.folder-icon {
+    font-size: 1.6rem;
+    line-height: 1;
 }
 
-.note-topic {
-    margin: 0 0 24px;
+.folder-name {
+    color: var(--text);
+    font-size: 1.05rem;
+    font-weight: 800;
 }
 
-.note-topic > h4 {
-    margin: 0 0 10px;
-    color: var(--accent);
-    font-size: 1rem;
+.folder-meta {
+    color: var(--muted);
+    font-size: 0.84rem;
 }
 
 .note-body {
