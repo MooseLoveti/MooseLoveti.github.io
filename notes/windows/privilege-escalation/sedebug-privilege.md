@@ -39,4 +39,3 @@ mimikatz # sekurlsa::logonpasswords
 ## 注意点
 
 - `SeDebugPrivilege` を持つだけでは自動的に有効化されているとは限らず、明示的に有効化する処理（Mimikatz の `privilege::debug` など）が必要な場合がある。
-- `lsass.exe` のような機密性の高いプロセスへのデバッグアクセスは、資格情報の窃取（Mimikatz のノートを参照）に直結するため、この特権が付与されているアカウントは厳格に管理する必要がある。

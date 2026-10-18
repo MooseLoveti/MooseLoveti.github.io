@@ -29,5 +29,4 @@ msfvenom -p windows/x64/exec CMD='cmd.exe /c net localgroup administrators attac
 
 ## 注意点
 
-- DLL を絶対パスで指定する、あるいは `SetDllDirectory` やセーフ DLL 検索モードを使うことで、検索順序に起因するハイジャックを防げる。
 - Process Monitor などで「アプリケーションが存在しないパスの DLL を探している」痕跡を見つけるのが、脆弱な読み込み箇所を特定する基本的な手順になる。

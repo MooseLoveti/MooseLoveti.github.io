@@ -34,4 +34,4 @@ sc stop VulnService & sc start VulnService
 ## 注意点
 
 - このサービスが LocalSystem などの権限で動いていなければ、構成を書き換えられても得られる権限はそのサービスの実行権限止まりで、権限昇格にはならない。悪用前に対象サービスの実行アカウントを必ず確認する。
-- 対策は、サービスの ACL（`sc sdshow` で確認できる）を見直し、一般ユーザーに構成変更権限（`SERVICE_CHANGE_CONFIG`。SDDL では `DC`）や、ACL・所有者を変えられる `WRITE_DAC`（`WD`）・`WRITE_OWNER`（`WO`）を与えないこと。
+- 構成を書き換えるには、サービスの ACL で `SERVICE_CHANGE_CONFIG`（SDDL では `DC`）が必要。`WRITE_DAC`（`WD`）や `WRITE_OWNER`（`WO`）があれば、ACL を書き換えてこの権限を自分に付けられる。ACL は `sc sdshow <SERVICE_NAME>` で確認できる。

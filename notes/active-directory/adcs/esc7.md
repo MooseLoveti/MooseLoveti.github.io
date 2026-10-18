@@ -36,5 +36,5 @@ certipy req -u user@lab.local -p 'Password123' -ca 'LAB-CA' -target <CA_HOST> -r
 
 ## 注意点
 
-- `ManageCA`/`ManageCertificates` は CA の運用担当者に必要な強い権限であり、付与対象は厳密に絞るべき。BloodHound 等で、これらの権限が想定外のグループやユーザーに付与されていないか確認する。
-- ESC6 を無効化していても、ESC7 の権限があれば攻撃者が自分でフラグを立てられてしまうため、フラグの状態だけでなく「誰がそれを変更できるか」まで含めて評価する必要がある。
+- BloodHound 等で、`ManageCA`/`ManageCertificates` を持つアカウントを探す。
+- ESC6 のフラグが無効でも、`ManageCA` があれば自分でフラグを立てられる。

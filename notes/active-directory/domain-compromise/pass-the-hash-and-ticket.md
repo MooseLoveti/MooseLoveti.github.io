@@ -36,5 +36,5 @@ psexec.py -k -no-pass lab.local/administrator@target.lab.local
 
 ## 注意点
 
-- Pass-the-Hash はローカル Administrator のハッシュが使い回されている環境で特に有効。LAPS（Local Administrator Password Solution）でローカル管理者パスワードをホストごとにランダム化しておくことが有効な対策になる。
-- Pass-the-Ticket は Kerberos チケットの有効期限が切れると使えなくなる。侵害調査では、チケットの発行・使用ログ（Event ID 4768/4769 など）の異常な組み合わせ（短時間に多数のホストへの TGS 要求など）が手がかりになる。
+- Pass-the-Hash はローカル Administrator のハッシュが使い回されている環境で特に有効。
+- Pass-the-Ticket は Kerberos チケットの有効期限が切れると使えなくなる。

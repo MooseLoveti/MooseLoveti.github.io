@@ -55,4 +55,4 @@ kerberos::golden /user:administrator /domain:lab.local /sid:<SID> /krbtgt:<hash>
 ## 注意点
 
 - Mimikatz を実行するには既にローカル管理者または SYSTEM 権限が必要であり、「Mimikatz で権限を取る」のではなく「取った権限を仕上げに使う」ツールだという位置づけを誤解しないこと。
-- LSASS へのアクセスは EDR が最も重点的に監視するポイントのひとつ。多くの環境では LSASS の保護（Credential Guard、保護対象プロセス化）や EDR のシグネチャ検知によって、素の Mimikatz はそのままでは通らないことが多い。
+- LSASS が保護されている環境（Credential Guard など）や EDR が入っている環境では、素の Mimikatz はそのままでは通らないことが多い。

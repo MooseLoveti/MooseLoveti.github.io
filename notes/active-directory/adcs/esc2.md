@@ -32,5 +32,5 @@ certipy req -u user@lab.local -p 'Password123' -ca 'LAB-CA' -target <CA_HOST> \
 
 ## 注意点
 
-- EKU が Any Purpose、あるいは EKU が一切指定されていない（Any Purpose とほぼ同義に扱われる）テンプレートは、意図せずクライアント認証用途に使われるリスクがあるため、必要な EKU だけに絞って設定する。
+- EKU が一切指定されていないテンプレートも Any Purpose とほぼ同じに扱われ、同じように悪用できる。
 - テンプレートが SAN のクライアント指定も許可していれば、ESC1 と同じ要領で直接なりすますこともできる。

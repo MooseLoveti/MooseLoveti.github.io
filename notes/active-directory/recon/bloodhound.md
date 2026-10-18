@@ -33,4 +33,3 @@ bloodhound-python -u 'user' -p 'Password123' -d lab.local -ns <DC_IP> -c All
 ## 注意点
 
 - BloodHound はあくまで「権限関係の可視化」であり、実際に悪用できるかは個々の権限・サービスの状態に依存する。グラフで見つけたエッジ（`GenericAll` → ShadowCredential 攻撃、DCSync 権限 → secretsdump など）は、対応する攻撃手法のノートを別途参照して実行する。
-- 収集は AD 全体のオブジェクトを読み取るため、検知ログ（イベントログや EDR）に痕跡が残りやすい。収集範囲（`-c` オプション）を絞ることで、ノイズを減らせる場合がある。
