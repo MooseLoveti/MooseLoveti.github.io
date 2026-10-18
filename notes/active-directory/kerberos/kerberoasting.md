@@ -24,7 +24,7 @@ Kerberos 認証では、クライアントが特定のサービスにアクセ�
 
 ```
 # 認証情報あり（全ユーザーを列挙して対象を自動抽出）
-GetUserSPNs.py corp.local/user:'Password123' -dc-ip <DC_IP> -request
+GetUserSPNs.py lab.local/user:'Password123' -dc-ip <DC_IP> -request
 ```
 
 得られたハッシュは hashcat（モード 13100）などでオフラインクラックする。

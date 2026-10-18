@@ -21,11 +21,11 @@ ESC6 は、CA（証明書発行局）側の設定フラグ `EDITF_ATTRIBUTESUBJE
 ## コマンド
 
 ```
-certipy req -u user@corp.local -p 'Password123' -ca 'CORP-CA' \
-  -template 'User' -upn administrator@corp.local
+certipy req -u user@lab.local -p 'Password123' -ca 'LAB-CA' \
+  -template 'User' -upn administrator@lab.local
 ```
 
 ## 注意点
 
 - このフラグは古い互換性要件のために有効化されたまま残っていることがある。CA の設定（`certutil -getreg policy\EditFlags` など）で定期的に確認し、不要であれば無効化する。
-- ESC6 が有効な環境では、個々のテンプレートの堅牢さに関わらず全体が危険にさらされるため、優先度の高い是正対象になる。
+- 2022 年 5 月の更新（KB5014754）以降、CA は証明書に要求者の SID を入れるため、強い証明書マッピングが有効な DC ではこのフラグだけでは別ユーザーになりすませないことが多い。SID 拡張を入れないテンプレート（ESC9 の条件）などと組み合わさっているかも確認する。

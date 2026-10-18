@@ -23,7 +23,7 @@ ESC1〜ESC4 が「テンプレート単位」の設定不備なのに対し、ES
 
 ```bash
 # PKI 関連オブジェクトの ACL を含めて、悪用できる設定を列挙する
-certipy find -u <user>@lab.local -p '<password>' -dc-ip <dc-ip> -vulnerable -stdout
+certipy find -u user@lab.local -p 'Password123' -dc-ip <DC_IP> -vulnerable -stdout
 ```
 
 ```powershell

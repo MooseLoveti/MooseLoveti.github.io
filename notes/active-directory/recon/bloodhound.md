@@ -24,7 +24,7 @@ BloodHound は、AD オブジェクト（ユーザー、グループ、ACL、セ
 
 ```
 # Linux から（Impacket ベースの収集）
-bloodhound-python -u 'user' -p 'Password123' -d corp.local -ns <DC_IP> -c All
+bloodhound-python -u 'user' -p 'Password123' -d lab.local -ns <DC_IP> -c All
 
 # Windows 上から SharpHound
 .\SharpHound.exe -c All --zipfilename loot
