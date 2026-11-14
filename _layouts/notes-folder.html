@@ -2,11 +2,18 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#0d0e0e">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+JP:wght@400;500;700&display=swap">
+    <link rel="icon" href="/icon/deer.jpg" type="image/jpeg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page.title | escape }} | 学習ノート | {{ site.title }}</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+    <a class="skip-link" href="#content">本文へスキップ</a>
     {% include header.html %}
 
     {% comment %}
@@ -19,7 +26,7 @@
     {% assign depth = parts | size %}
     {% assign notes = site.pages | where: "layout", "note" | where_exp: "n", "n.dir contains base" %}
 
-    <main class="note">
+    <main class="note note-folder" id="content">
         <header class="note-head">
             <nav class="note-breadcrumb" aria-label="パンくずリスト">
                 <a href="/#notes">トップ</a>
@@ -37,31 +44,32 @@
         <p>準備中</p>
         {% elsif depth < 4 %}
         {% if depth == 2 %}{% assign folders = notes | group_by: "category" | sort: "name" %}{% else %}{% assign folders = notes | group_by: "topic" | sort: "name" %}{% endif %}
-        <ul class="folder-grid">
+        <ul class="folder-list">
             {% for folder in folders %}
             {% assign first_parts = folder.items.first.dir | split: "/" %}
             {% assign latest = folder.items | sort: "date" | last %}
             <li>
-                <a class="folder-card" href="/notes/{{ first_parts[2] }}/{% if depth == 3 %}{{ first_parts[3] }}/{% endif %}">
-                    <span class="folder-icon" aria-hidden="true">📁</span>
+                <a class="folder-link" href="/notes/{{ first_parts[2] }}/{% if depth == 3 %}{{ first_parts[3] }}/{% endif %}">
                     <span class="folder-name">{{ folder.name | default: "その他" | escape }}</span>
-                    <span class="folder-meta">{{ folder.size }} 件 · 最新 {{ latest.date | date: "%Y-%m-%d" }}</span>
+                    <span class="folder-meta">{{ folder.size }} 件 · <span class="folder-date">最新 {{ latest.date | date: "%Y-%m-%d" }}</span></span>
                 </a>
             </li>
             {% endfor %}
         </ul>
         {% else %}
         {% assign sorted = notes | sort: "date" | reverse %}
-        <div class="article-list">
+        <ul class="rows">
             {% for note in sorted %}
-            <article class="article-record">
-                <span class="tag">{{ note.date | date: "%Y-%m-%d" }}{% if note.updated %}（追記 {{ note.updated | date: "%Y-%m-%d" }}）{% endif %}</span>
-                <h2><a href="{{ note.url }}">{{ note.title | escape }}</a></h2>
-                {% if note.summary %}<p>{{ note.summary | escape }}</p>{% endif %}
-                {% if note.tags.size > 0 %}<div class="tag-row">{% for tag in note.tags %}<span class="tag">{{ tag | escape }}</span>{% endfor %}</div>{% endif %}
-            </article>
+            <li class="row">
+                <span class="row-date">{{ note.date | date: "%Y-%m-%d" }}{% if note.updated %}（追記 {{ note.updated | date: "%Y-%m-%d" }}）{% endif %}</span>
+                <div class="row-main">
+                    <h2 class="row-title"><a class="row-link" href="{{ note.url }}">{{ note.title | escape }}</a></h2>
+                {% if note.summary %}<p class="row-summary">{{ note.summary | escape }}</p>{% endif %}
+                </div>
+                {% if note.tags.size > 0 %}<ul class="tags">{% for tag in note.tags %}<li class="tag">{{ tag | escape }}</li>{% endfor %}</ul>{% endif %}
+            </li>
             {% endfor %}
-        </div>
+        </ul>
         {% endif %}
     </main>
 
