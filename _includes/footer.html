@@ -1,6 +1,3 @@
 <footer class="site-footer">
-    <small>&copy; <span id="year">{{ site.time | date: "%Y" }}</span> Takihana Shota </small>
+    <small>&copy; {{ site.time | date: "%Y" }} Takihana Shota</small>
 </footer>
-<script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-</script>
